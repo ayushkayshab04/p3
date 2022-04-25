@@ -10,7 +10,9 @@ app.use(express.urlencoded({
 }));
 
 app.use(route);
-app.get("/", (req, res) => res.send("Learning NodeJs"));
+app.get("/", (req, res) => {
+    res.send("Learning NodeJs")
+});
 
 
 app.listen(port, ()=>{
