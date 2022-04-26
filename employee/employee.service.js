@@ -18,8 +18,9 @@ const addEmployee = async({firstName,lastName,age,desig,depart})=>{
     const conn = await mysqlManager.getConnection();
     const query = `INSERT INTO project.employee 
     (first_name, last_name, age, desgination, department)
-    VALUES('${firstName}', '${lastName}', ${age}, '${desig}', '${depart}')`;
+    VALUES('${firstName}', '${lastName}', ${age}, '${desig}', '${depart}')` ;
     await conn.execute(query)
+
 }
 
 const updateEmployee = async({id},{firstName,lastName,age,desig,depart})=>{

@@ -1,4 +1,5 @@
 const employeeService = require("./employee.service");
+const {getEmployeeListValidaton} = require("./employee.validation")
 
 
 
@@ -23,14 +24,15 @@ const getEmployeeById = async(req,res,next)=>{
 const addEmployee = async(req,res,next)=>{
   try{
    const {firstName,lastName,age,desig,depart} = req.body
-   await employeeService.addEmployee({firstName,lastName,age,desig,depart})
+   await getEmployeeListValidaton.validateAsync(req.body)
+   const data = await employeeService.addEmployee({firstName,lastName,age,desig,depart})
    res.send("Employee added Sucessfully") 
   }catch(err){
     throw new Error(err)
   }
 }
 
-const updatEmployee = async(req,res,next)=>{
+const updateEmployee = async(req,res,next)=>{
   try{
     const {id} = req.params;
     const {firstName,lastName,age,desig,depart} = req.body;
@@ -57,6 +59,6 @@ module.exports = {
     getEmployeeList,
     getEmployeeById,
     addEmployee,
-    updatEmployee,
+    updateEmployee,
     deleteEmployee,   
 }
