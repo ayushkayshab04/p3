@@ -1,7 +1,7 @@
-const express = require("express");
-const { employeeRoute } = require("./employee");
+const express = require('express');
+const { employeeRoute } = require('./employee');
 
 const route = express.Router({ mergeParams: true });
-route.use("/employee", employeeRoute);
+route.use('/employee', employeeRoute);
 
 module.exports = route;

@@ -1,5 +1,5 @@
-const mysql = require("mysql2/promise");
-
+/* eslint-disable consistent-return */
+const mysql = require('mysql2/promise');
 
 module.exports = ({
   environment,
@@ -9,16 +9,14 @@ module.exports = ({
   password,
   database,
 }) => {
-  if (environment === "development") {
-    const getConnection = async () => {
-      return mysql.createPool({
-        host,
-        port,
-        user,
-        password,
-        database,
-      });
-    };
+  if (environment === 'development') {
+    const getConnection = async () => mysql.createPool({
+      host,
+      port,
+      user,
+      password,
+      database,
+    });
 
     return {
       getConnection,
